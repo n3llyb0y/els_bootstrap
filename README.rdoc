@@ -31,11 +31,25 @@ _els_identity_ will not only result in a user cdid, but also their name, email a
 
 1. add the gem to your Gemfile
  gem 'els_bootstrap', "~>0.0.1"
-
 2. call els_identity in your controller. Example:
-	class ApplicationController < ActionController::Base
-		before_filter :els_identity
-	end
+ class ApplicationController < ActionController::Base
+  before_filter :els_identity
+ end
+
+If you do need to pull up an additional model, you might want to chain a before_filter. For example:
+ class ApplicationController < ActionController::Base
+  before_filter :els_identity,:my_model
+
+  def my_model
+    if @els_identity
+      @my_model ||= MyModel.find_by_name(@els_identity.name)
+    end
+ end
+
+== TODO
+
+It would be nice to marshal an, optional, internal model automatically.
+
 
 == Contributing
 Yes please.

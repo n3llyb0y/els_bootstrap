@@ -30,7 +30,7 @@ _els_identity_ will not only result in a user cdid, but also their name, email a
 == How to use it
 
 *add the gem to your Gemfile
- gem 'els_bootstrap', "~>0.0.1"
+ gem 'els_bootstrap', "~>0.0.2"
 
 *tell the plugin about the openAM instance and the cookies it uses. In config/els_token.yml do something like this:
   development:

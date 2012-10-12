@@ -90,5 +90,15 @@ class ElsSessionController < ApplicationController
       redirect_to session[:redirect_to]
     end
   end
+  
+  class ElsFaker < ElsToken::ElsIdentity
+    attr_accessor :cdid, :token_id
+    def initialize(cdid)
+      super
+      @cdid = cdid
+      @token_id = Random.rand
+    end 
+  end
+    
 
 end

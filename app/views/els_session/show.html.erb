@@ -1,0 +1,9 @@
+<% if @els_identity %>
+	<div class='els_logout'>
+		<%= button_to "logout", els_session_destroy_path, :method => :delete %>
+	</div>
+<% end %>
+<h1>Session Info<h1>
+<div class='field'>
+  <p>Identity: <%= @els_identity.inspect %></p>
+</div>

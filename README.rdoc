@@ -29,9 +29,18 @@ _els_identity_ will not only result in a user cdid, but also their name, email a
 
 == How to use it
 
-1. add the gem to your Gemfile
+*add the gem to your Gemfile
  gem 'els_bootstrap', "~>0.0.1"
-2. call els_identity in your controller. Example:
+
+*tell the plugin about the openAM instance and the cookies it uses. In config/els_token.yml do something like this:
+  development:
+    uri: https://elsuat-sso.corp.aol.com:443/opensso/identity
+    cookie: iPlanetDirectoryProuat
+  production:
+    uri: https://els-sso.corp.aol.com:443/opensso/identity
+    cookie: iPlanetDirectoryPro
+
+*call els_identity in your controller. Example:
  class ApplicationController < ActionController::Base
   before_filter :els_identity
  end
@@ -49,7 +58,7 @@ If you do need to pull up an additional model, you might want to chain a before_
 == TODO
 
 It would be nice to marshal an, optional, internal model automatically.
-
+Generator for the els_token.yml config
 
 == Contributing
 Yes please.

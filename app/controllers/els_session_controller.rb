@@ -84,7 +84,7 @@ class ElsSessionController < ApplicationController
   end
   
   def go_back
-    if session[:redirect_to] =~ /els_session\//
+    if session[:redirect_to].nil? || session[:redirect_to] =~ /els_session\//
       # Do not redirect back to a session action
       redirect_to root_path
     else

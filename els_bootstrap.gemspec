@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
                     with and without ELS, a lot less hacky"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  #s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.8"
   s.add_dependency "jquery-rails"

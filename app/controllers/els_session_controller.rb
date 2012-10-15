@@ -54,6 +54,7 @@ class ElsSessionController < ApplicationController
   def destroy
     Rails.cache.delete(session[:els_token], :namespace => "els_identity")
     session[:els_token] = nil
+    session[:redirect_to] = nil
     cookies.delete(self.class.els_options['cookie'], :domain => request.env["SERVER_NAME"])
     redirect_to els_session_new_path
   end

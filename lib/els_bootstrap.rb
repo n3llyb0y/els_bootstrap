@@ -39,6 +39,10 @@ module ElsBootstrap
     #  @els_identity.has_role? "some group"
     # 
     def els_identity
+      # Avoid caching failures when running in dev
+      ElsSessionController
+      ElsToken
+      ElsToken::ElsIdentity
       @els_identity = Rails.cache.fetch(session[:els_token], :namespace => "els_identity")
       unless @els_identity
         Rails.logger.debug("no identity in cache. Redirecting")

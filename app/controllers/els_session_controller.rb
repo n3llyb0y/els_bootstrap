@@ -17,7 +17,7 @@ class ElsSessionController < ApplicationController
       session[:els_token] = @els_identity.token_id
       Rails.cache.write(session[:els_token], @els_identity, 
         :namespace => "els_identity",
-        :expires_in => 1200)
+        :expires_in => 1.hour)
       go_back
     end
     # or get some login details  
@@ -52,7 +52,7 @@ class ElsSessionController < ApplicationController
   end
 
   def destroy
-    Rails.cache.delete(session[:els_token])
+    Rails.cache.delete(session[:els_token], :namespace => "els_identity")
     session[:els_token] = nil
     cookies.delete(self.class.els_options['cookie'], :domain => request.env["SERVER_NAME"])
     redirect_to els_session_new_path
@@ -78,7 +78,7 @@ class ElsSessionController < ApplicationController
     logger.debug("got token id #{session[:els_token]}")
     Rails.cache.write(session[:els_token], @els_identity, 
       :namespace => "els_identity",
-      :expires_in => 1200)
+      :expires_in => 1.hour)
     go_back
   end
   

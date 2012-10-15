@@ -42,7 +42,10 @@ module ElsBootstrap
       @els_identity = Rails.cache.fetch(session[:els_token], :namespace => "els_identity")
       unless @els_identity
         Rails.logger.debug("no identity in cache. Redirecting")
-        session[:redirect_to] = request.env["PATH_INFO"]
+        session[:redirect_to] = "#{request.env["PATH_INFO"]}"
+        unless request.env["QUERY_STRING"].empty?
+          session[:redirect_to] += "?#{request.env["QUERY_STRING"]}"
+        end
         logger.debug("user will be returned to #{session[:redirect_to]}")
         redirect_to els_session_new_path
       end

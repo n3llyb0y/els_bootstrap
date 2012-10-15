@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    els_bootstrap (0.0.1)
+    els_bootstrap (0.0.3)
       coffee-rails (~> 3.2.1)
       els_token (= 1.2.0)
       jquery-rails

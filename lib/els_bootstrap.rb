@@ -43,7 +43,9 @@ module ElsBootstrap
       ElsSessionController
       ElsToken
       ElsToken::ElsIdentity
-      @els_identity = Rails.cache.fetch(session[:els_token], :namespace => "els_identity")
+      if session[:els_token]
+        @els_identity = Rails.cache.fetch(session[:els_token], :namespace => "els_identity")
+      end
       unless @els_identity
         Rails.logger.debug("no identity in cache. Redirecting")
         session[:redirect_to] = "#{request.env["PATH_INFO"]}"

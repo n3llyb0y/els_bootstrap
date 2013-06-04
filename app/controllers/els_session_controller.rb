@@ -14,12 +14,14 @@ class ElsSessionController < ApplicationController
   def new
     @els_identity = get_identity rescue nil
     if @els_identity
+      logger.debug("retrieved els identity #{@els_identity.inspect}")
       session[:els_token] = @els_identity.token_id
       Rails.cache.write(session[:els_token], @els_identity, 
         :namespace => "els_identity",
         :expires_in => 1.hour)
       go_back
     end
+    logger.debug("unable to retrieve els identity :(")
     # or get some login details  
   end
 

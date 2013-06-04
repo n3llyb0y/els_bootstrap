@@ -1,4 +1,4 @@
-= ElsBootstrap
+# ElsBootstrap
 
 Does your code sometimes feel a bit hacked in order to work around ELS authentication during development and testing?
 
@@ -8,7 +8,7 @@ Do you find yourself running multiple queries to pull the identity of the person
 
 If you answer yes to any of the above then the Els Bootsrap might be your cup of tea.
 
-== What it does
+## What it does
 
 The Els Bootstrap is a Rails engine providing some methods, routes and views to help your product work in the world of ELS authentication - whether you are using a bonafide ELS agent (behind Apache for example) or have rolled your own Web Server.
 
@@ -16,7 +16,7 @@ It does this by interacting with the OpenAM HTTP API in order to provide credent
 
 When in ELS Identity mode, the Els Bootstrap will attempt to create a user identity from a known cookie SSO token. If no cookie is found (because you are developing, for example) then the user is directed to a built-in logon page where valid credentials can be supplied and validated against ELS - just as they would in production! However, if you want to put any ol' username in to test your app then you can override the auth and create a mock user.
 
-== How it does it
+## How it does it
 
 When you include the gem, your Rails project will get 2 helper methods that you can use in any of your controllers (probably as before_filter methods).
 
@@ -27,7 +27,7 @@ When you include the gem, your Rails project will get 2 helper methods that you 
 _els_identity_ will not only result in a user cdid, but also their name, email address, employee number, AD Group membership (baked in roles!), account status and a few other tidbits. So unless you are after the entire HR Record, this is all you'll need for user identity in your app :)
 
 
-== How to use it
+## How to use it
 
 *add the gem to your Gemfile
  gem 'els_bootstrap', "~>0.0.3.2"
@@ -55,11 +55,11 @@ If you do need to pull up an additional model, you might want to chain a before_
     end
  end
 
-== TODO
+## TODO
 
 It would be nice to marshal an, optional, internal model automatically.
 Generator for the els_token.yml config
 
-== Contributing
+## Contributing
 Yes please.
 fork, hack, send pull request :)

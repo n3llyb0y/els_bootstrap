@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.8"
   s.add_dependency "jquery-rails"
   s.add_dependency 'coffee-rails', '~> 3.2.1'
-  s.add_dependency "els_token", "1.2.0"
+  s.add_dependency "els_token", "~> 1.2.2"
 end
